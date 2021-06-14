@@ -1,10 +1,10 @@
 package com.irfanirawansukirman.movie.data.contract
 
 import com.irfanirawansukirman.core.ui.IOTaskResult
-import com.irfanirawansukirman.network.data.response.MovieResponse
-import com.irfanirawansukirman.network.data.response.MoviesGeneralResponse
-import com.irfanirawansukirman.network.data.response.MoviesRangeResponse
-import com.irfanirawansukirman.network.data.response.ReviewsResponse
+import com.irfanirawansukirman.network.data.response.movies.MovieResponse
+import com.irfanirawansukirman.network.data.response.movies.MoviesGeneralResponse
+import com.irfanirawansukirman.network.data.response.movies.MoviesRangeResponse
+import com.irfanirawansukirman.network.data.response.movies.ReviewsResponse
 import com.irfanirawansukirman.network.entity.MovieEntity
 import kotlinx.coroutines.flow.Flow
 

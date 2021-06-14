@@ -1,4 +1,4 @@
-package com.irfanirawansukirman.network.data.response
+package com.irfanirawansukirman.network.data.response.movies
 
 import android.os.Parcelable
 import com.squareup.moshi.Json

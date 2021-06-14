@@ -9,7 +9,7 @@ import com.irfanirawansukirman.movie.domain.MovieUseCaseImpl
 import com.irfanirawansukirman.movie.presentation.movies.MoviesVM
 import com.irfanirawansukirman.movie.util.BaseTest
 import com.irfanirawansukirman.movie.util.createMap
-import com.irfanirawansukirman.network.data.response.*
+import com.irfanirawansukirman.network.data.response.movies.*
 import io.mockk.MockKAnnotations
 import io.mockk.clearAllMocks
 import io.mockk.coEvery

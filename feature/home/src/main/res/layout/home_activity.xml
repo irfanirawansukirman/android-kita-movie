@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
+
+    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+        android:id="@+id/btnMovies"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_48dp"
+        android:layout_margin="@dimen/dimens_16dp"
+        android:background="@drawable/circular_border_shape"
+        android:gravity="center"
+        android:text="@string/title_movies"
+        android:textColor="@color/uiWhite"
+        app:finalCornerAngle="@dimen/dimens_40dp"
+        app:initialCornerAngle="@dimen/dimens_40dp"
+        app:spinning_bar_color="@color/uiOrange"
+        app:spinning_bar_padding="@dimen/dimens_8dp"
+        app:spinning_bar_width="@dimen/dimens_4dp" />
+
+    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+        android:id="@+id/btnNews"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_48dp"
+        android:layout_marginLeft="@dimen/dimens_16dp"
+        android:layout_marginRight="@dimen/dimens_16dp"
+        android:background="@drawable/circular_border_shape"
+        android:gravity="center"
+        android:text="@string/title_news"
+        android:textColor="@color/uiWhite"
+        app:finalCornerAngle="@dimen/dimens_40dp"
+        app:initialCornerAngle="@dimen/dimens_40dp"
+        app:spinning_bar_color="@color/uiOrange"
+        app:spinning_bar_padding="@dimen/dimens_8dp"
+        app:spinning_bar_width="@dimen/dimens_4dp" />
+</LinearLayout>

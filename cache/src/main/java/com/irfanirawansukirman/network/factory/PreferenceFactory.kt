@@ -3,6 +3,7 @@ package com.irfanirawansukirman.network.factory
 import android.content.SharedPreferences
 import javax.inject.Inject
 
+
 class PreferenceFactory @Inject constructor(val sharedPreferences: SharedPreferences) {
 
     fun clearPreferences() {
@@ -41,13 +42,13 @@ class PreferenceFactory @Inject constructor(val sharedPreferences: SharedPrefere
      * puts a key value pair in shared prefs if doesn't exists, otherwise updates value on given [key]
      */
     operator fun set(key: String, value: Any?) {
-        sharedPreferences.apply {
+        sharedPreferences.edit {
             when (value) {
-                is String? -> edit { putString(key, value) }
-                is Int -> edit { putInt(key, value) }
-                is Boolean -> edit { putBoolean(key, value) }
-                is Float -> edit { putFloat(key, value) }
-                is Long -> edit { putLong(key, value) }
+                is String? -> putString(key, value)
+                is Int -> putInt(key, value)
+                is Boolean -> putBoolean(key, value)
+                is Float -> putFloat(key, value)
+                is Long -> putLong(key, value)
                 else -> throw UnsupportedOperationException("Pref factory set not yet implemented")
             }
         }

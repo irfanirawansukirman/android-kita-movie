@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.irfanirawansukirman.core.ui.imageview.ImageProgress
+        android:id="@+id/ivPoster"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:foreground="@drawable/bg_gradient_black_to_transparent_vertical"
+        app:layout_constraintDimensionRatio="H, 16:9"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/img_bobobox" />
+
+    <TextView
+        android:id="@+id/tvPubslished"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimens_16dp"
+        android:layout_marginBottom="@dimen/dimens_4dp"
+        android:textColor="@color/uiWhite"
+        android:textSize="@dimen/text_12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tvTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="@string/app_name" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:gravity="left"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimens_16dp"
+        android:layout_marginRight="@dimen/dimens_16dp"
+        android:layout_marginBottom="@dimen/dimens_16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/uiWhite"
+        android:textSize="@dimen/text_16sp"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="@string/app_name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

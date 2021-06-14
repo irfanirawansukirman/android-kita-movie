@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.viewpager.widget.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/vpNews"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/uiWhite">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tlNews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/uiWhite"
+        android:elevation="@dimen/dimens_4dp"
+        app:tabBackground="@null"
+        app:tabIndicatorColor="@color/colorAccent"
+        app:tabIndicatorHeight="@dimen/dimens_2dp"
+        app:tabRippleColor="@null"
+        app:tabSelectedTextColor="@color/colorAccent"
+        app:tabTextColor="@color/uiGrayDark" />
+</androidx.viewpager.widget.ViewPager>

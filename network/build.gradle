@@ -19,6 +19,7 @@ android {
         consumerProguardFiles "consumer-rules.pro"
 
         buildConfigField "String", "MOVIE_API_BASE_URL", "\"https://api.themoviedb.org/3/\""
+        buildConfigField "String", "NEWS_API_BASE_URL_V2", "\"https://newsapi.org/v2/\""
     }
 
     buildTypes {
@@ -46,7 +47,7 @@ dependencies {
 
     kapt "com.squareup.moshi:moshi-kotlin-codegen:1.11.0"
 
-    kapt 'com.google.dagger:dagger-compiler:2.29.1'
+    kapt 'com.google.dagger:dagger-compiler:2.33'
 
     debugImplementation 'com.readystatesoftware.chuck:library:1.1.0'
     releaseImplementation 'com.readystatesoftware.chuck:library-no-op:1.1.0'

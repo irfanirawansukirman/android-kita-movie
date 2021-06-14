@@ -1,32 +1,30 @@
 package com.irfanirawansukirman.movie.presentation.movies
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.irfanirawansukirman.core.base.BaseActivity
 import com.irfanirawansukirman.core.databinding.ToolbarDefaultBinding
 import com.irfanirawansukirman.core.ui.UIState
 import com.irfanirawansukirman.core.ui.UIState.*
+import com.irfanirawansukirman.core.util.Features.NEWS
 import com.irfanirawansukirman.core.util.extension.*
-import com.irfanirawansukirman.core.util.viewmodel.ViewModelFactory
 import com.irfanirawansukirman.movie.BuildConfig
 import com.irfanirawansukirman.movie.R
 import com.irfanirawansukirman.movie.data.mapper.MoviesUI
 import com.irfanirawansukirman.movie.databinding.MoviesActivityBinding
 import com.irfanirawansukirman.movie.databinding.MoviesItemBinding
 import com.irfanirawansukirman.movie.di.MovieComponentProvider
-import com.irfanirawansukirman.movie.presentation.moviedetail.MovieDetailActivity
 import com.irfanirawansukirman.movie.presentation.movies.MoviesCategoryState.*
 import com.irfanirawansukirman.movie.presentation.moviesfavorite.MoviesFavoriteActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 class MoviesActivity : BaseActivity() {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
 
     private val viewModel by viewModels<MoviesVM> { viewModelFactory }
 
@@ -41,7 +39,7 @@ class MoviesActivity : BaseActivity() {
             hasFixedSize = true,
             reverseLayout = false,
             binder = { item, holder, _, _ ->
-                holder.bindItem(item) { movie -> navigateToMovieDetail(movie.id) }
+                holder.bindItem(item) { movie -> navigateToMovieDetail(movie.title) }
             }
         )
     }
@@ -145,7 +143,7 @@ class MoviesActivity : BaseActivity() {
 
     private fun showMovies(state: UIState<List<MoviesUI>>) {
         when (state) {
-            is Loading -> if (state.isLoading) showProgress()
+            is Loading -> if (state.isLoading) showProgress(supportFragmentManager)
             is Success -> {
                 hideProgress()
 
@@ -157,8 +155,17 @@ class MoviesActivity : BaseActivity() {
         }
     }
 
-    private fun navigateToMovieDetail(movieId: Int?) {
-        navigation<MovieDetailActivity> { putExtra("movie_id", movieId) }
+    private fun navigateToMovieDetail(query: String?) {
+        try {
+            val intent = Intent(
+                this,
+                Class.forName(NEWS)
+            )
+            intent.putExtra("query", query)
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun navigateToMovieFavorite() {

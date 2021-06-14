@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.irfanirawansukirman.movie" >
-
-    <application>
-        <activity android:name=".presentation.moviesfavorite.MoviesFavoriteActivity" >
-        </activity>
-        <activity android:name=".presentation.moviedetail.MovieDetailActivity" />
-        <activity android:name=".presentation.movies.MoviesActivity" />
-    </application>
-
-</manifest>
+<manifest package="com.irfanirawansukirman.movie"/>

@@ -1,8 +1,8 @@
 package com.irfanirawansukirman.movie.data.mapper
 
-import com.irfanirawansukirman.network.data.response.MovieResponse
-import com.irfanirawansukirman.network.data.response.ReviewsData
-import com.irfanirawansukirman.network.data.response.ReviewsResponse
+import com.irfanirawansukirman.network.data.response.movies.MovieResponse
+import com.irfanirawansukirman.network.data.response.movies.ReviewsData
+import com.irfanirawansukirman.network.data.response.movies.ReviewsResponse
 
 data class MovieUI(
     val title: String?,

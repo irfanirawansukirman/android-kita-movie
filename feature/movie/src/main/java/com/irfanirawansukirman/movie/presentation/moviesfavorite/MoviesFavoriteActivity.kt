@@ -100,7 +100,7 @@ class MoviesFavoriteActivity : AppCompatActivity() {
 
     private fun showMovies(state: UIState<List<MoviesUI>>) {
         when (state) {
-            is Loading -> if (state.isLoading) showProgress()
+            is Loading -> if (state.isLoading) showProgress(supportFragmentManager)
             is Success -> {
                 hideProgress()
 

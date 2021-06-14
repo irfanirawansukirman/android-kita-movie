@@ -20,15 +20,17 @@ import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import retrofit2.Retrofit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @ExperimentalCoroutinesApi
 @Module(includes = [BaseModule::class, NetworkModule::class, CacheModule::class])
 class MovieAppModule {
 
+    // source: https://stackoverflow.com/a/35949468/7550660
     @Singleton
     @Provides
-    fun provideMovieService(retrofit: Retrofit): MovieService = ApiFactory.getService(retrofit)
+    fun provideMovieService(@Named("movie_url") retrofit: Retrofit): MovieService = ApiFactory.getService(retrofit)
 
     @Provides
     fun provideMovieWebService(

@@ -8,6 +8,7 @@ import com.irfanirawansukirman.movie.presentation.moviesfavorite.MoviesFavoriteA
 import dagger.BindsInstance
 import dagger.Component
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import javax.inject.Named
 import javax.inject.Singleton
 
 @ExperimentalCoroutinesApi

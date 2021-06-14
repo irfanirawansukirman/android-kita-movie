@@ -1,7 +1,7 @@
 package com.irfanirawansukirman.movie.data.mapper
 
-import com.irfanirawansukirman.network.data.response.MoviesGeneralData
-import com.irfanirawansukirman.network.data.response.MoviesRangeData
+import com.irfanirawansukirman.network.data.response.movies.MoviesGeneralData
+import com.irfanirawansukirman.network.data.response.movies.MoviesRangeData
 import com.irfanirawansukirman.network.entity.MovieEntity
 
 data class MoviesUI(

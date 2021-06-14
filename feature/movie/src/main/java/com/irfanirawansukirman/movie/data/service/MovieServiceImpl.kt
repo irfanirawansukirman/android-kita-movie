@@ -3,10 +3,10 @@ package com.irfanirawansukirman.movie.data.service
 import com.irfanirawansukirman.core.ui.IOTaskResult
 import com.irfanirawansukirman.core.util.coroutine.CoroutineContextProvider
 import com.irfanirawansukirman.movie.data.contract.IMovieWebService
-import com.irfanirawansukirman.network.data.response.MovieResponse
-import com.irfanirawansukirman.network.data.response.MoviesGeneralResponse
-import com.irfanirawansukirman.network.data.response.MoviesRangeResponse
-import com.irfanirawansukirman.network.data.response.ReviewsResponse
+import com.irfanirawansukirman.network.data.response.movies.MovieResponse
+import com.irfanirawansukirman.network.data.response.movies.MoviesGeneralResponse
+import com.irfanirawansukirman.network.data.response.movies.MoviesRangeResponse
+import com.irfanirawansukirman.network.data.response.movies.ReviewsResponse
 import com.irfanirawansukirman.network.data.service.MovieService
 import com.irfanirawansukirman.network.util.performSafeNetworkApiCall
 import kotlinx.coroutines.ExperimentalCoroutinesApi

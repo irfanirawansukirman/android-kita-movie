@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 object ApiFactory {
 
     fun build(
-        application: Context,
+        application: Context, baseUrl: String
     ): Retrofit {
 
         val client = OkHttpClient.Builder()
@@ -29,11 +29,14 @@ object ApiFactory {
                 }
             }.build()
 
-        return getRetrofit(client)
+        return getRetrofit(client, baseUrl)
     }
 
-    private fun getRetrofit(client: OkHttpClient) = Retrofit.Builder()
-        .baseUrl(BuildConfig.MOVIE_API_BASE_URL)
+    private fun getRetrofit(
+        client: OkHttpClient,
+        baseUrl: String
+    ) = Retrofit.Builder()
+        .baseUrl(baseUrl)
         .addConverterFactory(MoshiConverterFactory.create())
         .client(client)
         .build()

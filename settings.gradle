@@ -1,3 +1,5 @@
+include ':feature:home'
+include ':feature:news'
 include ':feature:movie'
 include ':network'
 include ':cache'
