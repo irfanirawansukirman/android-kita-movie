@@ -1,17 +1,15 @@
 package com.irfanirawansukirman.movie.presentation.movies
 
-import android.content.ActivityNotFoundException
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.viewModels
 import com.irfanirawansukirman.core.base.BaseActivity
 import com.irfanirawansukirman.core.databinding.ToolbarDefaultBinding
 import com.irfanirawansukirman.core.ui.UIState
 import com.irfanirawansukirman.core.ui.UIState.*
-import com.irfanirawansukirman.core.util.Features.NEWS
+import com.irfanirawansukirman.core.util.Params.API_KEY
+import com.irfanirawansukirman.core.util.Params.MOVIE_ID
 import com.irfanirawansukirman.core.util.extension.*
 import com.irfanirawansukirman.movie.BuildConfig
 import com.irfanirawansukirman.movie.R
@@ -19,12 +17,15 @@ import com.irfanirawansukirman.movie.data.mapper.MoviesUI
 import com.irfanirawansukirman.movie.databinding.MoviesActivityBinding
 import com.irfanirawansukirman.movie.databinding.MoviesItemBinding
 import com.irfanirawansukirman.movie.di.MovieComponentProvider
+import com.irfanirawansukirman.movie.presentation.moviedetail.MovieDetailActivity
 import com.irfanirawansukirman.movie.presentation.movies.MoviesCategoryState.*
 import com.irfanirawansukirman.movie.presentation.moviesfavorite.MoviesFavoriteActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
 class MoviesActivity : BaseActivity() {
+
+    private var viewBinding: MoviesActivityBinding? = null
 
     private val viewModel by viewModels<MoviesVM> { viewModelFactory }
 
@@ -39,12 +40,10 @@ class MoviesActivity : BaseActivity() {
             hasFixedSize = true,
             reverseLayout = false,
             binder = { item, holder, _, _ ->
-                holder.bindItem(item) { movie -> navigateToMovieDetail(movie.title) }
+                holder.bindItem(item) { movie -> navigateToMovieDetail(movie.id) }
             }
         )
     }
-
-    private var viewBinding: MoviesActivityBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -122,22 +121,22 @@ class MoviesActivity : BaseActivity() {
     }
 
     private fun getMoviesPopular() {
-        val param = HashMap<String, Any>().apply { put("api_key", BuildConfig.MOVIE_API_KEY) }
+        val param = HashMap<String, Any>().apply { put(API_KEY, BuildConfig.MOVIE_API_KEY) }
         viewModel.getMoviesPopular(param)
     }
 
     private fun getMoviesUpcoming() {
-        val param = HashMap<String, Any>().apply { put("api_key", BuildConfig.MOVIE_API_KEY) }
+        val param = HashMap<String, Any>().apply { put(API_KEY, BuildConfig.MOVIE_API_KEY) }
         viewModel.getMoviesUpcoming(param)
     }
 
     private fun getMoviesTopRated() {
-        val param = HashMap<String, Any>().apply { put("api_key", BuildConfig.MOVIE_API_KEY) }
+        val param = HashMap<String, Any>().apply { put(API_KEY, BuildConfig.MOVIE_API_KEY) }
         viewModel.getMoviesTopRated(param)
     }
 
     private fun getMoviesNowPlaying() {
-        val param = HashMap<String, Any>().apply { put("api_key", BuildConfig.MOVIE_API_KEY) }
+        val param = HashMap<String, Any>().apply { put(API_KEY, BuildConfig.MOVIE_API_KEY) }
         viewModel.getMoviesNowPlaying(param)
     }
 
@@ -155,17 +154,8 @@ class MoviesActivity : BaseActivity() {
         }
     }
 
-    private fun navigateToMovieDetail(query: String?) {
-        try {
-            val intent = Intent(
-                this,
-                Class.forName(NEWS)
-            )
-            intent.putExtra("query", query)
-            startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
-        }
+    private fun navigateToMovieDetail(movieId: Int?) {
+        navigation<MovieDetailActivity> { putExtra(MOVIE_ID, movieId) }
     }
 
     private fun navigateToMovieFavorite() {

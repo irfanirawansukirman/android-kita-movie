@@ -1,5 +1,6 @@
 package com.irfanirawansukirman.core.util.extension
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -16,13 +17,15 @@ fun AppCompatActivity.navigationToBrowser(url: String) {
 inline fun AppCompatActivity.navigationForPackage(
     packageName: String,
     isFinishPage: Boolean = false,
-    exception: (ClassNotFoundException) -> Unit
+    intentParams: Intent.() -> Unit,
+    exception: (ActivityNotFoundException) -> Unit
 ) {
     try {
         val intent = Intent(this, Class.forName(packageName))
+        intent.intentParams()
         startActivity(intent)
         if (isFinishPage) finish()
-    } catch (e: ClassNotFoundException) {
+    } catch (e: ActivityNotFoundException) {
         exception(e)
     }
 }
