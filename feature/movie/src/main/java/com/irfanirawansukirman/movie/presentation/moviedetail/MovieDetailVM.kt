@@ -1,13 +1,11 @@
 package com.irfanirawansukirman.movie.presentation.moviedetail
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.irfanirawansukirman.core.base.BaseVM
 import com.irfanirawansukirman.core.ui.UIState
 import com.irfanirawansukirman.core.util.coroutine.CoroutineContextProvider
-import com.irfanirawansukirman.core.util.extension.orDefault
 import com.irfanirawansukirman.movie.data.mapper.MovieWrapper
 import com.irfanirawansukirman.movie.data.mapper.filterReviews
 import com.irfanirawansukirman.movie.data.mapper.toUI
@@ -66,7 +64,7 @@ class MovieDetailVM @Inject constructor(
     fun getMovieById(movieId: Int) {
         executeJob {
             try {
-                val data = movieUseCaseImpl.getMovieById(movieId) ?: MovieEntity(0, "", "", "", "", "f")
+                val data = movieUseCaseImpl.getMovieById(movieId)
                 _movieById.value = data
             } catch (e: Exception) {
                 // do with exception

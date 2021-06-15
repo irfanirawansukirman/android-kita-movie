@@ -113,4 +113,8 @@ class MovieDetailVMTest : BaseTest() {
             movieObserver.onChanged(UIState.Loading(false))
         }
     }
+
+    override fun clear() {
+        viewModel.movie.removeObserver(movieObserver)
+    }
 }

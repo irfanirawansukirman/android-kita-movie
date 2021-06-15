@@ -8,7 +8,7 @@ import com.irfanirawansukirman.movie.data.contract.IMovieRemoteDataSource
 import com.irfanirawansukirman.movie.data.contract.IMovieRepository
 import com.irfanirawansukirman.movie.data.contract.IMovieWebService
 import com.irfanirawansukirman.movie.data.network.MovieNetworkDataSource
-import com.irfanirawansukirman.movie.data.repository.MovieRepositoryImpl
+import com.irfanirawansukirman.movie.data.repository.MoviesRepositoryImpl
 import com.irfanirawansukirman.movie.data.service.MovieServiceImpl
 import com.irfanirawansukirman.movie.domain.MovieUseCaseImpl
 import com.irfanirawansukirman.network.dao.MovieDao
@@ -50,7 +50,7 @@ class MovieAppModule {
     fun provideMovieRepositoryImpl(
         networkDataSource: MovieNetworkDataSource,
         cacheDataSource: MovieCacheDataSource
-    ): IMovieRepository = MovieRepositoryImpl(networkDataSource, cacheDataSource)
+    ): IMovieRepository = MoviesRepositoryImpl(networkDataSource, cacheDataSource)
 
     @Provides
     fun provideMovieUseCaseImpl(iMovieRepository: IMovieRepository): MovieUseCaseImpl =

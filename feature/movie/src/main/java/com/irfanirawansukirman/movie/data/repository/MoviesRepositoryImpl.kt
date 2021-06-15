@@ -14,7 +14,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MovieRepositoryImpl @Inject constructor(
+class MoviesRepositoryImpl @Inject constructor(
     override val iRemoteDataSource: IMovieRemoteDataSource,
     override val iCacheDataSource: IMovieCacheDataSource
 ) : IMovieRepository {

@@ -28,77 +28,6 @@ class MoviesVMTest : BaseTest() {
     @RelaxedMockK
     private lateinit var movieUseCaseImpl: MovieUseCaseImpl
 
-    private val fakeMoviesGeneralSuccessFlow = flow {
-        emit(
-            IOTaskResult.OnSuccess(
-                MoviesGeneralResponse(
-                    0,
-                    listOf(
-                        MoviesGeneralData(
-                            false,
-                            "",
-                            listOf(1, 2, 3),
-                            0,
-                            "",
-                            "",
-                            "",
-                            0.0,
-                            "",
-                            "",
-                            "",
-                            false,
-                            0.0,
-                            0
-                        )
-                    ),
-                    0,
-                    0
-                )
-            )
-        )
-    }
-
-    private val fakeMoviesRangeSuccessFlow = flow {
-        emit(
-            IOTaskResult.OnSuccess(
-                MoviesRangeResponse(
-                    MoviesRangeDates("", ""),
-                    0,
-                    listOf(
-                        MoviesRangeData(
-                            false,
-                            "",
-                            listOf(1, 2, 3),
-                            0,
-                            "",
-                            "",
-                            "",
-                            0.0,
-                            "",
-                            "",
-                            "",
-                            false,
-                            0.0,
-                            0
-                        )
-                    ),
-                    0,
-                    0
-                )
-            )
-        )
-    }
-
-    private val expectedMovies = listOf(
-        MoviesUI(
-            0,
-            "",
-            "",
-            "",
-            ""
-        )
-    )
-
     private val viewModel: MoviesVM by lazy {
         MoviesVM(context, testCoroutineContextProvider, movieUseCaseImpl)
     }
@@ -215,5 +144,9 @@ class MoviesVMTest : BaseTest() {
             moviesObserver.onChanged(UIState.Failure(mockException))
             moviesObserver.onChanged(UIState.Loading(false))
         }
+    }
+
+    override fun clear() {
+        viewModel.movies.removeObserver(moviesObserver)
     }
 }

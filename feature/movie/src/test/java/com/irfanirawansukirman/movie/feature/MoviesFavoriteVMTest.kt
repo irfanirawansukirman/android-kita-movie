@@ -7,15 +7,11 @@ import com.irfanirawansukirman.movie.domain.MovieUseCaseImpl
 import com.irfanirawansukirman.movie.presentation.moviesfavorite.MoviesFavoriteVM
 import com.irfanirawansukirman.movie.util.BaseTest
 import com.irfanirawansukirman.network.entity.MovieEntity
-import io.mockk.MockKAnnotations
-import io.mockk.clearAllMocks
 import io.mockk.coEvery
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.verifyOrder
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.After
-import org.junit.Before
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
@@ -31,15 +27,6 @@ class MoviesFavoriteVMTest : BaseTest() {
         MovieEntity(
             0,
             "",
-            "",
-            "",
-            "",
-            ""
-        )
-    )
-    private val expectedMovies = listOf(
-        MoviesUI(
-            0,
             "",
             "",
             "",
@@ -63,5 +50,9 @@ class MoviesFavoriteVMTest : BaseTest() {
             moviesObserver.onChanged(UIState.Success(expectedMovies))
             moviesObserver.onChanged(UIState.Loading(false))
         }
+    }
+
+    override fun clear() {
+        viewModel.movies.removeObserver(moviesObserver)
     }
 }
