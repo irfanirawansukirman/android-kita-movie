@@ -51,11 +51,6 @@ class MoviesFavoriteVMTest : BaseTest() {
         MoviesFavoriteVM(context, testCoroutineContextProvider, movieUseCaseImpl)
     }
 
-    @Before
-    fun `setup depends`() {
-        MockKAnnotations.init(this)
-    }
-
     @Test
     fun `get movies favorite is successfully`() = coroutinesRule.runBlockingTest {
         coEvery { movieUseCaseImpl.getAllFavoriteMovies() } returns moviesFavoriteResponse
@@ -68,10 +63,5 @@ class MoviesFavoriteVMTest : BaseTest() {
             moviesObserver.onChanged(UIState.Success(expectedMovies))
             moviesObserver.onChanged(UIState.Loading(false))
         }
-    }
-
-    @After
-    fun `clear all`() {
-        clearAllMocks()
     }
 }

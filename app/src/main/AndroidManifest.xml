@@ -16,9 +16,6 @@
         <activity android:name="com.irfanirawansukirman.movie.presentation.moviedetail.MovieDetailActivity" />
         <activity android:name="com.irfanirawansukirman.movie.presentation.movies.MoviesActivity" />
 
-        <activity android:name="com.irfanirawansukirman.news.presentation.newscategories.NewsCategoriesActivity" />
-        <activity android:name="com.irfanirawansukirman.news.presentation.news.NewsActivity" />
-
         <activity android:name="com.irfanirawansukirman.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

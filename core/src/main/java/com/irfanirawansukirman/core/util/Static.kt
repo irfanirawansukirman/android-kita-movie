@@ -1,5 +1,10 @@
 package com.irfanirawansukirman.core.util
 
+object Params {
+    const val API_KEY = "api_key"
+    const val MOVIE_ID = "movie_id"
+}
+
 object Times {
     const val THREE_POINT_FIVE_SEC = 3500L
     const val THREE_POINT_FIVE_MILLIS = 350L

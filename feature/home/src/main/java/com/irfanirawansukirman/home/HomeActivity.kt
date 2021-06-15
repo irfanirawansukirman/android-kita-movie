@@ -80,10 +80,10 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun navigateToMovies() {
-        navigationForPackage(MOVIES) {}
+        navigationForPackage(MOVIES, false, {}, {})
     }
 
     private fun navigateToNewsCategory() {
-        navigationForPackage(NEWS_CATEGORIES) {}
+        navigationForPackage(NEWS_CATEGORIES, false, {}, {})
     }
 }

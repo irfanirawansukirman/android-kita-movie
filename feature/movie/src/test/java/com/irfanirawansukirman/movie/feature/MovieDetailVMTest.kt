@@ -34,11 +34,6 @@ class MovieDetailVMTest : BaseTest() {
         MovieDetailVM(context, testCoroutineContextProvider, movieUseCaseImpl)
     }
 
-    @Before
-    fun `setup depends`() {
-        MockKAnnotations.init(this)
-    }
-
     @Test
     fun `get movie detail with review is successfully`() = coroutinesRule.runBlockingTest {
         val param = createMap { }
@@ -117,10 +112,5 @@ class MovieDetailVMTest : BaseTest() {
             movieObserver.onChanged(UIState.Success(expectedMovie))
             movieObserver.onChanged(UIState.Loading(false))
         }
-    }
-
-    @After
-    fun `clear all`() {
-        clearAllMocks()
     }
 }
